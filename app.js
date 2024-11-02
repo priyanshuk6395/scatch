@@ -1,14 +1,30 @@
 const express = require('express');
-const userModel = require('./model/user');
-const postModel = require('./model/post');
+require('dotenv').config();
+const userModel = require('./models/user-model');
+const postModel = require('./models/product-model');
+const db=require('./config/mongoose-connection');
+const cookieParser=require('cookie-parser');
+const path=require('path');
+const bcrypt=require('bcrypt');
+const jwt=require('jsonwebtoken');
+const ownerRouter = require('./routes/onwerRouter');
+const productsRouter = require('./routes/productsRouter');
+const usersRouter = require('./routes/usersRouter');
 
 const app=express();
+
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname,"public")));
 
-app.get("/",(req,res)=>{
 
-})
+app.use("/owners", ownerRouter);
+app.use("/users", usersRouter);
+app.use("/products", productsRouter);
 
-app.listr
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Node connected at port : ${PORT}`);
+});
