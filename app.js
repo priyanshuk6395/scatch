@@ -1,8 +1,8 @@
 const express = require('express');
 require('dotenv').config();
+const db=require('./config/mongoose-connection');
 const userModel = require('./models/user-model');
 const postModel = require('./models/product-model');
-const db=require('./config/mongoose-connection');
 const cookieParser=require('cookie-parser');
 const path=require('path');
 const bcrypt=require('bcrypt');
