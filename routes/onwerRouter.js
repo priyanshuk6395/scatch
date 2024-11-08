@@ -1,36 +1,31 @@
 const express = require("express");
 const router = express.Router();
 const ownerModel = require("../models/owner-model");
+const {registerOwner,loginOwner,logout} =require('../controllers/ownerController');
+const productSchema = require("../models/product-model");
+const isOwnerin= require('../middlewares/isOwnerin');
 
-router.get("/", (req, res) => {
-  res.send("hii");
+router.get("/", isOwnerin,async (req, res) => {
+  let products = await productSchema.find();
+  res.render("admin",{products});
 });
-if (process.env.NODE_ENV) {
-  router.post("/create", async (req, res) => {
-    let owners = await ownerModel.find();
-    if (owners.length > 0) {
-      return res.status(503).send("Not authorize to create new onwer");
-    }
-    if (!req.body || Object.keys(req.body).length === 0) {
-        return res.status(400).send("Request body is empty");
-    }
-    
-    
-    let{fullname, email, password}=req.body;
+router.get("/login", async (req, res) => {
+  let error=req.flash("error");
+  res.render('owner-login',{error});
+});
 
-    let createdOnwer=await ownerModel.create({
-      fullname,
-      email,
-      password
-    });
+router.post("/login", loginOwner);
+router.get("/create", async (req, res) => {
+  let error=req.flash("error");
+  res.render('owner-create',{error});
+});
+router.post("/create",registerOwner);
 
-    res.status(201).send(createdOnwer);
-  });
-}
 
-router.get("/admin",(req,res)=>{
-  let success=req.flash("success");
-  res.render("createproducts",{success});
-})
+router.get("/admin", isOwnerin,(req, res) => {
+  let success = req.flash("success");
+  res.render("createproducts", { success });
+});
 
+router.get("/logout",logout);
 module.exports = router;

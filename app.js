@@ -5,8 +5,6 @@ const userModel = require('./models/user-model');
 const postModel = require('./models/product-model');
 const cookieParser=require('cookie-parser');
 const path=require('path');
-const bcrypt=require('bcrypt');
-const jwt=require('jsonwebtoken');
 const expressSession=require('express-session');
 const flash = require('connect-flash');
 
@@ -14,7 +12,6 @@ const ownerRouter = require('./routes/onwerRouter');
 const productsRouter = require('./routes/productsRouter');
 const usersRouter = require('./routes/usersRouter');
 const index=require('./routes/index');
-const isLoggedin= require('./middlewares/isLoggedin');
 
 const app=express();
 app.use(expressSession({

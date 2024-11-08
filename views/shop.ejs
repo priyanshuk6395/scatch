@@ -1,6 +1,14 @@
 <%- include('./partials/header') %>
-    <div class="w-full h-screen flex items-start px-20 py-20">
-        <div class="w-[25%] flex h-screen flex-col items-start">
+<% if(success.length>0){ %>
+    <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+        <span class="inline-block mt-1 mb-1 text-white">
+            <%= success %>
+        </span>
+    </div>
+    <% } %>
+
+    <div class="w-full h-screen flex items-start px-20 py-10">
+        <div class="w-[20%] flex h-screen flex-col items-start">
             <div class="flex items-center gap-2">
                 <h3>sort by</h3>
                 <form action="/shop">
@@ -21,11 +29,11 @@
                 <a class="block w-fit mb-2" href="">Discount</a>
             </div>
         </div>
-        <div class="w-[75%] flex flex-col gap-5 h-screen bg-zinc-100 ">
+        <div class="w-[80%] flex flex-col gap-5 h-screen bg-zinc-100 rounded-md">
             <div class="flex items-start gap-5">
                 <% products.forEach(function(product){ %>
-                    <div class="w-60">
-                        <div class="w-full h-52 flex items-center justify-center bg-[<%= product.bgcolor %>]">
+                    <div class="w-60 ">
+                        <div class="w-full rounded-t-md h-52 flex items-center justify-center bg-[<%= product.bgcolor %>]">
                             <img class="h-[12rem]" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
                                 alt="">
                         </div>
@@ -38,8 +46,9 @@
                                 <h4>₹ <%= product.price %>
                                 </h4>
                             </div>
-                            <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="">
-                                <i class="ri-add-line"></i>
+                            <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="/addtocart/<%= product._id %>">
+                                <!-- Solid black icon with black background -->
+                                <i class="ri-add-line text-black p-2 rounded-full"></i>
                             </a>
                         </div>
                     </div>

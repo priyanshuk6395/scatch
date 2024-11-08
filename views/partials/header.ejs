@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+    <!-- Example using Roboto as a Helvetica alternative -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-<body class="font-['helvetica_now_display']">
-    <nav class="w-full fixed top-0 left-0 px-5 py-3">
-        <h3 class="text-xl">Scatch</h3>
+  <!-- Include Remix Icon CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="font-['Roboto']">
+    <nav class="w-full px-5 py-3 ">
+      <h3 class="text-xl">Scatch</h3>
+      <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
+      <% if(loggedin){ %>
+        <div class="flex gap-5 w-full px-5 py-3 flex justify-end">
+        <a href="/shop">Shop</a>
+        <a href="/users/cart">Cart</a>
+        <a href="/users/account">My Account</a>
+        <a class="text-red-600" href="/users/logout">logout</a>
+      </div>
+      <% } %>
+      
     </nav>
+  </body>
+</html>
