@@ -1,7 +1,7 @@
 # Scatch - A Bag Shop 👜
 
-Scatch is a full-stack web application for an online bag shop, where users can browse, register, and purchase bags. Built with Node.js and Express, this project features secure authentication, image uploads, and a user-friendly interface for a smooth shopping experience.
-🎉 **Check out the live version of Scatch on Render and start shopping for your favorite bags today!** [Visit Scatch on Render](https://your-render-link.com)
+Scatch is a full-stack web application for an online bag shop, where users can browse, register, and purchase bags. Built with Node.js and Express, this project features secure authentication, image uploads, and a user-friendly interface for a smooth shopping experience.\\
+🎉 **Check out the live version of Scatch on Render and start shopping for your favorite bags today!** [Visit Scatch on Render](https://scatch-yabh.onrender.com)
 
 
 ## Features
@@ -25,7 +25,7 @@ Scatch is a full-stack web application for an online bag shop, where users can b
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/scatch-bag-shop.git
+   https://github.com/priyanshuk6395/scatch.git
    cd scatch-bag-shop
 2. **Install dependencies:**
    ```bash
